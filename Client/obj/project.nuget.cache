@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "F2ArOa/c+0bziASYbKhYWNmQPt4qt3Z72Zyquc8kOuqs2jCZXTbO+uGT/hUjIKXIXx48Z3pyuB1hO36MalplqA==",
+  "dgSpecHash": "WqVFi8aw9Lv8l44qPH8DrBAKRFxf09e3uc0o/W2u4Is6fYB5KAl80SRwTgJCAjB6Rt7duYcxKU9ATSlGiDUorw==",
   "success": true,
-  "projectFilePath": "D:\\RiderProjects\\VideoChat\\Client\\Client.csproj",
+  "projectFilePath": "D:\\RiderProjects\\VideoChat\\simple-videochat\\Client\\Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\idrea\\.nuget\\packages\\aforge\\2.2.5\\aforge.2.2.5.nupkg.sha512",
     "C:\\Users\\idrea\\.nuget\\packages\\aforge.video\\2.2.5\\aforge.video.2.2.5.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "H6kGV8y7ftd3qsvNaTlYGkpzA26OcjlQ/JiUMj7aV/BAhjp/OC5rQ+62JJ2BOsvEWLRQ7qyouysWc1tFlFSGoA==",
+  "dgSpecHash": "98IT/ck0A2zeCPsIE5efbD5U4VXqDuTQXi8+IZIgghxlX1iJu4LCJ9STZDowJB/dJjz2oSzDKucx3t2VKTViug==",
   "success": true,
-  "projectFilePath": "D:\\RiderProjects\\VideoChat\\Server\\Server.csproj",
+  "projectFilePath": "D:\\RiderProjects\\VideoChat\\simple-videochat\\Server\\Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\idrea\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\idrea\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

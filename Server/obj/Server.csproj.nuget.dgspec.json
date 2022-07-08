@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\RiderProjects\\VideoChat\\Server\\Server.csproj": {}
+    "D:\\RiderProjects\\VideoChat\\simple-videochat\\Server\\Server.csproj": {}
   },
   "projects": {
-    "D:\\RiderProjects\\VideoChat\\Server\\Server.csproj": {
+    "D:\\RiderProjects\\VideoChat\\simple-videochat\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RiderProjects\\VideoChat\\Server\\Server.csproj",
+        "projectUniqueName": "D:\\RiderProjects\\VideoChat\\simple-videochat\\Server\\Server.csproj",
         "projectName": "Server",
-        "projectPath": "D:\\RiderProjects\\VideoChat\\Server\\Server.csproj",
+        "projectPath": "D:\\RiderProjects\\VideoChat\\simple-videochat\\Server\\Server.csproj",
         "packagesPath": "C:\\Users\\idrea\\.nuget\\packages\\",
-        "outputPath": "D:\\RiderProjects\\VideoChat\\Server\\obj\\",
+        "outputPath": "D:\\RiderProjects\\VideoChat\\simple-videochat\\Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -518,11 +518,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\RiderProjects\\VideoChat\\Client\\Client.csproj",
+      "projectUniqueName": "D:\\RiderProjects\\VideoChat\\simple-videochat\\Client\\Client.csproj",
       "projectName": "Client",
-      "projectPath": "D:\\RiderProjects\\VideoChat\\Client\\Client.csproj",
+      "projectPath": "D:\\RiderProjects\\VideoChat\\simple-videochat\\Client\\Client.csproj",
       "packagesPath": "C:\\Users\\idrea\\.nuget\\packages\\",
-      "outputPath": "D:\\RiderProjects\\VideoChat\\Client\\obj\\",
+      "outputPath": "D:\\RiderProjects\\VideoChat\\simple-videochat\\Client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

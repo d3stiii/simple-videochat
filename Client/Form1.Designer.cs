@@ -114,6 +114,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.VideoBox);
             this.Controls.Add(this.MyVideoBox);
             this.Controls.Add(this.MicSelection);
             this.Controls.Add(this.CameraSelection);
@@ -121,7 +122,6 @@
             this.Controls.Add(this.ConnectButton);
             this.Controls.Add(this.PortField);
             this.Controls.Add(this.IpField);
-            this.Controls.Add(this.VideoBox);
             this.Name = "Form1";
             this.Text = "VideoChatClient";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
