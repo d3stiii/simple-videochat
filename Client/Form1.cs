@@ -1,14 +1,16 @@
+using Client.Factories;
 using Client.Services;
 using Client.UI;
 
 namespace Client;
 
 public partial class Form1 : Form {
+    private readonly IServiceFactory _serviceFactory = new ServiceFactory();
     private INetworkService _networkService;
     private IVideoCaptureService _videoCaptureService;
     private IAudioCaptureService _audioCaptureService;
 
-    public Form1() => 
+    public Form1() =>
         InitializeComponent();
 
     private void ConnectButton_Click(object sender, EventArgs e) {
@@ -25,8 +27,7 @@ public partial class Form1 : Form {
     }
 
     private void Form1_Shown(object sender, EventArgs e) {
-        RegisterServices();
-        AddDevicesToBoxes();
+        InitializeServices();
     }
 
     private void Form1_FormClosed(object sender, FormClosedEventArgs e) =>
@@ -42,48 +43,24 @@ public partial class Form1 : Form {
         MyVideoBox.Invoke(() => MyVideoBox.Show());
     }
 
-    private void RegisterServices() {
-        var services = AllServices.Container;
-        RegisterHandlersProvider(services);
-        RegisterDevicesProvider(services);
-        RegisterNetworkService(services);
-        services.RegisterSingle<IVideoPlayerService>(new VideoPlayerService(VideoBox, MyVideoBox));
-        services.RegisterSingle<IAudioPlayerService>(new AudioPlayerService());
-        RegisterVideoCaptureService(services);
-        RegisterAudioCaptureService(services);
+    private void InitializeServices() {
+        IPacketHandlersProvider handlersProvider = _serviceFactory.CreateHandlerProvider();
+        IVideoPlayerService videoPlayerService = _serviceFactory.CreateVideoPlayerService(VideoBox, MyVideoBox);
+        IAudioPlayerService audioPlayerService = _serviceFactory.CreateAudioPlayerService();
+        _networkService = _serviceFactory.CreateNetworkService(ConnectionInfoLabel, handlersProvider);
+        _videoCaptureService =
+            _serviceFactory.CreateVideoCaptureService(_networkService, videoPlayerService, CameraSelection);
+        _audioCaptureService = _serviceFactory.CreateAudioCaptureService(_networkService, MicSelection);
+        InitializeDevices();
     }
 
-    private void RegisterAudioCaptureService(AllServices services) {
-        _audioCaptureService = new AudioCaptureService(_networkService, MicSelection);
-        services.RegisterSingle<IAudioCaptureService>(_audioCaptureService);
-    }
-
-    private void RegisterVideoCaptureService(AllServices services) {
-        _videoCaptureService = new VideoCaptureService(services.Single<INetworkService>(),
-            CameraSelection, services.Single<IVideoPlayerService>());
-        services.RegisterSingle<IVideoCaptureService>(_videoCaptureService);
-    }
-
-    private void RegisterNetworkService(AllServices services) {
-        _networkService = new NetworkService(ConnectionInfoLabel,
-            services.Single<IPacketHandlersProvider>());
-        services.RegisterSingle<INetworkService>(_networkService);
-    }
-
-    private void RegisterDevicesProvider(AllServices services) {
-        IDevicesProvider devicesProvider = new DevicesProvider();
-        services.RegisterSingle(devicesProvider);
+    private void InitializeDevices() {
+        IDevicesProvider devicesProvider = _serviceFactory.CreateDevicesProvider();
         devicesProvider.LoadDevices();
+        AddDevicesToBoxes(devicesProvider);
     }
 
-    private void RegisterHandlersProvider(AllServices services) {
-        IPacketHandlersProvider handlersProvider = new PacketHandlersProvider();
-        handlersProvider.InitHandlers();
-        services.RegisterSingle(handlersProvider);
-    }
-
-    private void AddDevicesToBoxes() {
-        IDevicesProvider devicesProvider = AllServices.Container.Single<IDevicesProvider>();
+    private void AddDevicesToBoxes(IDevicesProvider devicesProvider) {
         AddCameras(devicesProvider);
         AddMics(devicesProvider);
     }

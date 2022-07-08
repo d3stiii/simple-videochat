@@ -51,7 +51,7 @@ public class NetworkService : INetworkService {
     }
 
     private void ConnectCallback(IAsyncResult result) {
-        if (!_client.Client.Connected) {
+        if (_client == null || !_client.Client.Connected) {
             _connectionInfo.Invoke(() => _connectionInfo.Text = "Cant connect to server. Try again.");
             Disconnect();
             return;

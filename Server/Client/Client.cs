@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Net.Sockets;
+﻿using System.Net.Sockets;
 using Server.PacketHandlers;
 using Server.Packets;
 using Server.Server;
@@ -11,14 +10,14 @@ public class Client : IClient {
     public string Id { get; }
 
     private const int BufferSize = 40980;
-    private TcpClient _client;
     private readonly IServer _server;
-    private NetworkStream _stream;
     private readonly IPacketHandlerProvider _packetHandlerProvider;
-    private Packet _packet;
-    private byte[] _receiveBuffer;
+    private byte[]? _receiveBuffer;
+    private TcpClient? _client;
+    private NetworkStream? _stream;
+    private Packet? _packet;
 
-    public Client(TcpClient client, IServer server, IPacketHandlerProvider packetHandlerProvider) {
+    public Client(TcpClient? client, IServer server, IPacketHandlerProvider packetHandlerProvider) {
         Id = Guid.NewGuid().ToString();
         _client = client;
         _server = server;
@@ -30,14 +29,14 @@ public class Client : IClient {
     }
 
     public void Process() {
-        Console.WriteLine($"{_client.Client.RemoteEndPoint} as {Id} connected.");
+        Console.WriteLine($"{_client?.Client.RemoteEndPoint} as {Id} connected.");
         _client.ReceiveBufferSize = BufferSize;
         _client.SendBufferSize = BufferSize;
-        _stream.BeginRead(_receiveBuffer, 0, BufferSize, OnDataReceived, null);
+        _stream?.BeginRead(_receiveBuffer, 0, BufferSize, OnDataReceived, null);
     }
 
     public void Close() {
-        Console.WriteLine($"{_client?.Client?.RemoteEndPoint} disconnected.");
+        Console.WriteLine($"{_client?.Client?.RemoteEndPoint} with id {Id} disconnected.");
         _client?.Close();
         _stream?.Close();
         _packet = null;

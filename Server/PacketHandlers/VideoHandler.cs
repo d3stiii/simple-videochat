@@ -1,11 +1,16 @@
 ﻿using Server.Packets;
 using Server.Server;
-using Server.Services;
 
 namespace Server.PacketHandlers;
 
 public class VideoHandler : IPacketHandler {
+    private readonly IServer _server;
     public ClientPackets PacketId => ClientPackets.Video;
+
+    public VideoHandler(IServer server) {
+        _server = server;
+        Console.WriteLine($"{nameof(VideoHandler)} initialized.");
+    }
 
     public void Execute(Packet packet, string authorId) {
         var bytesCount = packet.ReadInt();
@@ -20,8 +25,7 @@ public class VideoHandler : IPacketHandler {
 
         packet.Write(bitmap.Length);
         packet.Write(bitmap);
-
-        IServer server = AllServices.Container.Single<IServer>();
-        server.SendDataToAll(packet, authorId);
+        
+        _server.SendDataToAll(packet, authorId);
     }
 }
