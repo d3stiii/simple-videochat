@@ -1,5 +1,6 @@
 ﻿using Client.Packets;
 using Client.Services;
+using Client.Services.ServiceLocator;
 
 namespace Client.PacketHandlers;
 

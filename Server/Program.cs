@@ -8,18 +8,11 @@ public static class Program {
         StartServer();
         Console.ReadLine();
     }
-
+    
     private static void StartServer() {
         IPacketHandlerProvider handlersProvider = new PacketHandlerProvider();
         IServer? server = new Server.Server(25565, handlersProvider);
         handlersProvider.InitHandlers(server);
-        
-        try {
-            server.Start();
-        }
-        catch (Exception e) {
-            server?.Stop();
-            Console.WriteLine(e);
-        }
+        server.Start();
     }
 }

@@ -22,10 +22,10 @@ public class Client : IClient {
         _client = client;
         _server = server;
         _packetHandlerProvider = packetHandlerProvider;
-        _server.AddClient(this);
-        _packet = new Packet();
         _stream = _client.GetStream();
+        _packet = new Packet();
         _receiveBuffer = new byte[BufferSize];
+        _server.AddClient(this);
     }
 
     public void Process() {

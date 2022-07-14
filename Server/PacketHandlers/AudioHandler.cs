@@ -7,12 +7,8 @@ public class AudioHandler : IPacketHandler {
     private readonly IServer _server;
     public ClientPackets PacketId => ClientPackets.Audio;
 
-    public AudioHandler(IServer server) {
-        _server = server;
+    public AudioHandler(IServer server) => _server = server;
 
-        Console.WriteLine($"{nameof(AudioHandler)} initialized.");
-    }
-    
     public void Execute(Packet packet, string authorId) {
         var bytesCount = packet.ReadInt();
         if (bytesCount > packet.UnreadLength())

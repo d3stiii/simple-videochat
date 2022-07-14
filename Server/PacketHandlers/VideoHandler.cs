@@ -7,10 +7,7 @@ public class VideoHandler : IPacketHandler {
     private readonly IServer _server;
     public ClientPackets PacketId => ClientPackets.Video;
 
-    public VideoHandler(IServer server) {
-        _server = server;
-        Console.WriteLine($"{nameof(VideoHandler)} initialized.");
-    }
+    public VideoHandler(IServer server) => _server = server;
 
     public void Execute(Packet packet, string authorId) {
         var bytesCount = packet.ReadInt();

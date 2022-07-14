@@ -1,4 +1,4 @@
-﻿namespace Client.Services;
+﻿namespace Client.Services.ServiceLocator;
 
 public class AllServices {
     public static AllServices Container => _instance ??= new AllServices();
